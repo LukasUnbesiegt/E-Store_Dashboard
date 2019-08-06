@@ -1,0 +1,4 @@
+.tableStyle {
+    overflow-y: visible !important;
+    z-index: -1000;
+}
