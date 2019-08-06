@@ -76,14 +76,15 @@ export function auth() {
 				type: AUTH_USER,
 				payload: response.data
 			});
-
-			if (!response.data.isAuth) {
-			}
 		});
 	};
 }
 
 export const logoutUser = () => dispatch => {
 	authService.deleteToken();
-	dispatch(push("/"));
+	const REDIRECT_URL =
+		process.env.NODE_ENV === "development"
+			? "http://localhost:3001"
+			: "https://estorebkh.com";
+	window.location.assign(REDIRECT_URL);
 };
