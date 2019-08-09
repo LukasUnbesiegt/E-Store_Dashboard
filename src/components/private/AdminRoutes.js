@@ -9,22 +9,7 @@ import {
 } from "reactstrap";
 
 import { logoutUser } from "../../actions/userActions";
-import {
-	getProductsToTable,
-	getCollections,
-	getVariants
-} from "../../actions/productsActions";
 
-import { getDeliveries } from "../../actions/settingsActions";
-import { getUsers } from "../../actions/adminActions";
-import {
-	getOrders,
-	getEnquries,
-	getOrdersById
-} from "../../actions/customerActions";
-import { filtersOrders } from "../../actions/ordersActions";
-import { getStoreProfile } from "../../actions/adminSettings";
-import { getSliders, getFAQs } from "../../actions/siteSettings/siteSettings";
 import styles from "./AdminRoutes.module.css";
 import SideBar from "./sidebar/index";
 import Authenticated from "../misc/auth/Authenticated";
@@ -40,6 +25,15 @@ import InfoUser from "./InfoUser/InfoUser";
 import Contents from "./contents/Contents";
 import Marketing from "./marketing/Marketing";
 import TopBar from "./topBar/TopBar";
+import Brand from "./brands/index";
+import Category from "./categories/Category";
+import Collections from "./collections/index";
+import {
+	getCategories,
+	getBrands,
+	getCollections,
+	getProductsToTable
+} from "../../actions/productsActions";
 class AdminRoutes extends Component {
 	state = {
 		dropdownOpen: false,
@@ -48,17 +42,10 @@ class AdminRoutes extends Component {
 	};
 
 	componentDidMount = () => {
-		this.props.getProductsToTable();
-		this.props.getDeliveries();
-		this.props.filtersOrders({}, 1);
-		this.props.getUsers();
-		this.props.getStoreProfile();
+		this.props.getCategories();
+		this.props.getBrands();
 		this.props.getCollections();
-		this.props.getVariants();
-		this.props.getSliders();
-		this.props.getEnquries();
-		this.props.getFAQs();
-		this.props.getOrdersById();
+		this.props.getProductsToTable();
 	};
 
 	toggle = () => {
@@ -97,7 +84,6 @@ class AdminRoutes extends Component {
 		let sidebarWidth = "2";
 		let topbarWidth = "10";
 		let iconDirection = "left";
-
 		if (this.state.changeStyle) {
 			sidebarWidth = "1";
 			topbarWidth = "11";
@@ -140,12 +126,13 @@ class AdminRoutes extends Component {
 								<Switch>
 									<Route exact path="/" render={props => <DashBoard />} />
 									<Route path="/products" render={props => <Products />} />
+									<Route path="/brand" render={props => <Brand />} />
+									<Route path="/category" render={props => <Category />} />
 									<Route
-										path="/orders"
-										render={props => (
-											<Orders getOrdersById={this.props.getOrdersById} />
-										)}
+										path="/collections"
+										render={props => <Collections />}
 									/>
+									<Route path="/orders" render={props => <Orders />} />
 									<Route path="/users" render={props => <Users />} />
 									<Route path="/customers" render={props => <Customers />} />
 									<Route path="/promotions" render={props => <Promotions />} />
@@ -167,17 +154,10 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
 	logoutUser,
-	getProductsToTable,
-	getDeliveries,
-	filtersOrders,
-	getUsers,
-	getStoreProfile,
+	getBrands,
+	getCategories,
 	getCollections,
-	getVariants,
-	getSliders,
-	getEnquries,
-	getFAQs,
-	getOrdersById
+	getProductsToTable
 };
 
 export default connect(

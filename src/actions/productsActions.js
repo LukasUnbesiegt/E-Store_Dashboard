@@ -123,6 +123,7 @@ export const addCollection = (dataToSubmit) => {
                     toastr.success('Collection added')
                     dispatch(getCollections())
                     dispatch(asyncActionFinish())
+                    dispatch(push('/collections'))
 
 
 
@@ -610,16 +611,14 @@ export const getCategories = () => {
         axiosInstance.get('/products/categories')
             .then((response) => {
 
-
+                dispatch(asyncActionFinish())
                 dispatch({
 
                     type: GET_CATEGORIES,
                     payload: response.data.categories
 
                 })
-
-
-                dispatch(asyncActionFinish())
+             
 
 
             })
@@ -649,25 +648,24 @@ export const sendImages = (blobs) => {
         formData.append(`file${i}`, blobs[i])
 
     }
-
+    // formData.append('file' , blobs[0])
+   
     const config = {
         header: { 'content-type': 'multipart/form-data' }
     }
 
 
+    console.log(formData);
     toastr.success('images are uploading', 'wait a sec')
-
-
-
-
-    const request = axiosInstance.post(`/products/upload`, formData, config)
+    const request = axiosInstance.post(`/upload/s3`, formData, config)
         .then((response) => {
-
+            console.log('photos' , response.data)
             toastr.success('success')
             return response.data
 
         })
         .catch((err) => {
+            toastr.error('error in uploading photos')
             console.log(err)
         })
 
@@ -675,7 +673,6 @@ export const sendImages = (blobs) => {
         type: 'UPLOADED_IMAGES',
         payload: request
     }
-
 
 }
 
@@ -688,11 +685,11 @@ export const deleteOriginalImg = (imageId, productId) => {
     return (dispatch) => {
 
 
-        axiosInstance.post(`/products/upload/${productId}/${imageId}`)
+        axiosInstance.post(`/upload/s3/delete/${productId}/${imageId}`)
             .then((response) => {
                 toastr('deleted original photo')
 
-                dispatch({
+             dispatch({
 
                 })
 
@@ -766,32 +763,25 @@ export const addBrand = (dataToSubmit) => {
 
         try {
 
-
-            const response = await axiosInstance.post('/products/brand', dataToSubmit)
-
             dispatch(asyncActionStart())
+            const response = await axiosInstance.post('/products/brand', dataToSubmit)
+          
             if (response) {
 
-
-                if (response.data.success) {
-
+                dispatch(asyncActionFinish())
                     toastr.success('Brand added', 'successfully added brand')
                     dispatch(getBrands())
-                    dispatch(asyncActionFinish())
-                } else {
-
-
-                    dispatch(asyncActionFinish())
-                    toastr.error('Category Error', 'errors in added category')
-                }
+                    dispatch(push('/brand'))
+                   
+              
 
             }
 
 
         } catch (error) {
 
-
-
+            toastr.error('Category Error', 'errors in added category')
+            dispatch(asyncActionFinish())
 
         }
 
@@ -823,6 +813,7 @@ export const addCategory = (dataToSubmit) => {
                     toastr.success('Category added', 'successfully added category')
                     dispatch(getCategories())
                     dispatch(asyncActionFinish())
+                    dispatch(push('/category'))
 
 
 
@@ -837,21 +828,13 @@ export const addCategory = (dataToSubmit) => {
                     toastr.error('Category Error', 'errors in added category')
                 }
 
-
-
-
             }
 
 
         } catch (error) {
 
 
-
-
         }
-
-
-
 
     }
 
@@ -872,10 +855,7 @@ export const addProduct = (dataToSubmit) => {
         axiosInstance.post(`/products/product`, dataToSubmit)
             .then((response) => {
 
-
                 if (response.data.success) {
-
-
                     toastr.success('product added', 'a product is added successsfully')
                     dispatch(reset())
                     dispatch(getProductsToTable())
@@ -922,7 +902,7 @@ export const getProductToEdit = (productId) => {
                     payload: response.data.product
                 })
 
-                dispatch(push('/admin/products/add/'))
+                dispatch(push('/products/add/'))
 
 
 

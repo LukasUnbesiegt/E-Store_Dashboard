@@ -10,8 +10,7 @@ import {
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 
-
-import { deleteOriginalImg, sendImages } from '../../../../../../actions/productsActions'
+import { deleteOriginalImg, sendImages } from '../../../../../actions/productsActions'
 
 
 
@@ -121,6 +120,7 @@ class ProductPhotos extends Component {
         const { input } = this.props;
         if (this.state.filesCropped.length > 0) {
 
+
             const blobs = this.state.filesCropped.map((file) => {
                 return file.blob
             })
@@ -140,7 +140,6 @@ class ProductPhotos extends Component {
                         input.onChange(this.state.images)
 
                     });
-                    console.log('');
 
                 })
         }
@@ -170,7 +169,7 @@ class ProductPhotos extends Component {
                 <div
                 >
                     {
-                        this.state.images && this.props.productId && (
+                        this.state.images && (
                             <i
                                 className="ni ni-fat-remove"
                                 style={{
@@ -192,7 +191,7 @@ class ProductPhotos extends Component {
                     }
 
                     <br />
-                    <img style={{ height: '200px', width: '200px' , objectFit : 'cover' }} src={image.url} alt="Card image cap" />
+                    <img style={{ height: '300px', width: '300px' }} src={image.url} alt="Card image cap" />
                 </div>
             )
 

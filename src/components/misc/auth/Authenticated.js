@@ -4,7 +4,7 @@ import { auth } from "../../../actions/userActions";
 import { withRouter } from "react-router-dom";
 import Loading from "../Loading/LoadingComponent";
 
-export default function(ComposedClass, reload) {
+export default function(ComposedClass) {
 	class AuthenticationCheck extends Component {
 		componentDidMount() {
 			this.props.auth();

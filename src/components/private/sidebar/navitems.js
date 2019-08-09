@@ -1,5 +1,12 @@
 export const navitems = [
 	{
+		name: "home",
+		linkTo: "/",
+		icon: "fa-home",
+		admin: false,
+		dropdowns: false
+	},
+	{
 		name: "inventory",
 		linkTo: "/products",
 		icon: "fa-archive",
@@ -12,16 +19,16 @@ export const navitems = [
 			},
 			{
 				name: "collections",
-				linkTo: "/products/collections"
+				linkTo: "/collections"
 			},
 			{
 				name: "categories",
-				linkTo: "/products/categories"
+				linkTo: "/category"
 			},
 
 			{
 				name: "brands",
-				linkTo: "/products/brands"
+				linkTo: "/brand"
 			}
 		]
 	},

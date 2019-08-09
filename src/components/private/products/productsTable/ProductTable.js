@@ -13,9 +13,8 @@ import { push } from "connected-react-router";
 
 class ProductTable extends Component {
 	_editHandler = productToEdit => {
-		alert(productToEdit);
 		this.props.getProductToEdit(productToEdit);
-		this.props.push("/admin/products/add/");
+		this.props.push("/products/add/");
 	};
 
 	_deleteHandler = productId => {
@@ -27,7 +26,7 @@ class ProductTable extends Component {
 			const product = this.props.products.products.find(item => {
 				return item._id === productId;
 			});
-			console.log(product);
+
 			this.props.singleProductRedirect(product);
 		}
 	};

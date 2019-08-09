@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import AddBrand from "./form/AddBrand";
-import BrandsList from "./BrandsList";
-import { Nav, NavItem } from "reactstrap";
+import AddCollection from "./form/AddCollection";
 import { Link, Switch, Route, NavLink } from "react-router-dom";
+import CollectionsList from "./CollectionsList";
+import { Nav, NavItem } from "reactstrap";
 
-class Brands extends Component {
+class Collections extends Component {
 	render() {
 		return (
 			<div className="container">
@@ -20,7 +20,7 @@ class Brands extends Component {
 						<Nav pills>
 							<NavLink
 								className="nav-link mx-1"
-								to="/brand"
+								to="/collections"
 								activeStyle={{
 									backgroundImage: `linear-gradient(120deg, #f6d365 0%, #fda085 100%)`,
 									color: "white",
@@ -28,12 +28,12 @@ class Brands extends Component {
 								}}
 								style={{ letterSpacing: "3px" }}
 							>
-								Brands List
+								Collections List
 							</NavLink>
 
 							<NavLink
 								className="nav-link mx-1"
-								to="/brand/add"
+								to="/collections/add"
 								activeStyle={{
 									backgroundImage: `linear-gradient(120deg, #f6d365 0%, #fda085 100%)`,
 									color: "white",
@@ -41,19 +41,19 @@ class Brands extends Component {
 								}}
 								style={{ letterSpacing: "3px" }}
 							>
-								Add Brand
+								Add Collection
 							</NavLink>
 						</Nav>
 					</div>
 				</div>
 
 				<Switch>
-					<Route exact path="/brand" render={() => <BrandsList />} />
-					<Route path="/brand/add" render={() => <AddBrand />} />
+					<Route exact path="/collections" render={() => <CollectionsList />} />
+					<Route path="/collections/add" render={() => <AddCollection />} />
 				</Switch>
 			</div>
 		);
 	}
 }
 
-export default Brands;
+export default Collections;

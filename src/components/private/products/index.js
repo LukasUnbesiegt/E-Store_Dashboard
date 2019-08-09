@@ -3,17 +3,16 @@ import { Switch, Route, Link } from "react-router-dom";
 import HeaderBar from "../../styles/HeaderBar";
 import { connect } from "react-redux";
 import Authenticated from "../../misc/auth/Authenticated";
-import Table from "./productsTable/ProductTable";
+import Table from "./productsTable/MaterialTable";
 import AddProduct from "./addproducts/AddProduct";
 import AddCategory from "../categories/index";
 import Category from "../categories/Category";
 import Brand from "../brands/index";
-import Collections from "../categories/collections";
 
 class Products extends Component {
 	render() {
 		const { products } = this.props;
-
+		console.log(this.props.user);
 		return (
 			<div className="">
 				<HeaderBar
@@ -32,15 +31,6 @@ class Products extends Component {
 							<Switch>
 								<Route exact path="/products" render={() => <Table />} />
 								<Route path="/products/add" render={() => <AddProduct />} />
-								<Route
-									path="/products/categories"
-									render={() => <Category />}
-								/>
-								<Route path="/products/brands" render={() => <Brand />} />
-								<Route
-									path="/products/collections"
-									render={() => <Collections />}
-								/>
 							</Switch>
 						</div>
 					</div>
@@ -54,8 +44,9 @@ const mapStateToProps = state => ({
 	products: state.products.productsTable
 });
 
-// const mapDispatchToProps = {
+const mapDispatchToProps = {};
 
-// }
-
-export default connect(mapStateToProps)(Authenticated(Products));
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Authenticated(Products));

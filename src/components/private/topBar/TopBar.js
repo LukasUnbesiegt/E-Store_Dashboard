@@ -39,7 +39,7 @@ class TopBar extends Component {
 
 				<DropdownMenu>
 					<DropdownItem>
-						<a className="dropdown-item" href="/admin/infouser">
+						<a className="dropdown-item" href="/infouser">
 							User Informations
 						</a>
 					</DropdownItem>
