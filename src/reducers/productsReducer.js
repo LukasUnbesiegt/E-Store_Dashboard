@@ -15,7 +15,7 @@ import {
 	GET_COLLECTIONS,
 	GET_VARIANTS
 } from "../actions/types";
-
+import moment from "moment";
 const initialState = {
 	productToEdit: null
 };
@@ -30,8 +30,47 @@ export default (state = initialState, action) => {
 			return { ...state, categories: action.payload };
 		case GET_BRANDS:
 			return { ...state, brands: action.payload };
+
 		case GET_PRODUCTS:
-			return { ...state, productsTable: action.payload };
+			let { products, totalItems, currentPage } = action.payload;
+
+			let columns = [
+				{ title: "Name", field: "name" },
+				{ title: "Price", field: "price", type: "numeric" },
+				{ title: "Category", field: "category" },
+				{ title: "Brand", field: "brand" },
+				{ title: "CreatedAt", field: "createdAt", type: "date" },
+				{ title: "Stocks", field: "stocks", type: "numeric" },
+				{ title: "Likes", field: "likes", type: "numeric" },
+				{ title: "Length", field: "length", type: "numeric" },
+				{ title: "Width", field: "width", type: "numeric" },
+				{ title: "Height", field: "height", type: "numeric" },
+				{ title: "Weight", field: "weight", type: "numeric" }
+				// {
+				// 	title: "Birth Place",
+				// 	field: "birthCity",
+				// 	lookup: { 34: "İstanbul", 63: "Şanlıurfa" }
+				// }
+			];
+
+			let data = products.map(product => {
+				return {
+					_id: product._id,
+					name: product.name,
+					price: product.price.normal,
+					category: product.category.name || "no category",
+					brand: product.brand.name || "no brand",
+					createdAt: moment(product.createAt).format("YYYY MM DD"),
+					stocks: product.stocks || 0,
+					likes: product.likes || 0,
+					length: product.dimension.length || "no length found",
+					weight: product.dimension.weight || "no weight found",
+					width: product.dimension.width || "no width found",
+					height: product.dimension.height || "no height found"
+				};
+			});
+
+			return { ...state, products: { columns, products, data } };
 
 		case DELETE_CATEGORY:
 			return { ...state };
@@ -39,7 +78,7 @@ export default (state = initialState, action) => {
 		case GET_PRODUCT_EDIT:
 			let product = action.payload;
 			let refinedProduct;
-			console.log("product to edit", product);
+
 			if (product) {
 				refinedProduct = {
 					...product,

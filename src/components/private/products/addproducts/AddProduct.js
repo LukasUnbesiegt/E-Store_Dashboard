@@ -41,6 +41,7 @@ class AddProduct extends Component {
 
 	render() {
 		let categories, brands, collections;
+		console.log("initialValues", this.props.initialValues);
 		// we want to refine data from server to fit in need of redux-form values
 		if (this.props.categories) {
 			categories = this.props.categories.map(category => {

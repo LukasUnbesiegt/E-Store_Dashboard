@@ -65,7 +65,10 @@ class AddProductForm extends Component {
 			{ name: "weight" },
 			{ name: "size" }
 		];
-
+		console.log(
+			"description",
+			initialValues && initialValues.details.description
+		);
 		return (
 			<form onSubmit={handleSubmit(submitCallback)} className="was-validated">
 				<div className="container-fluid">
@@ -216,9 +219,7 @@ class AddProductForm extends Component {
 					<Field
 						name="details.description"
 						component={Editor}
-						initialContent={
-							initialValues ? initialValues.details.description : "<p></p>"
-						}
+						initialContent={initialValues && initialValues.details.description}
 						description={"product description"}
 					/>
 				</div>

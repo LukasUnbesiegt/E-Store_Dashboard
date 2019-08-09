@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Table from "../../../misc/table/Table";
 import moment from "moment";
 import { connect } from "react-redux";
+import MaterialTable from "material-table";
 import {
 	deleteProduct,
 	getProductToEdit,
@@ -12,69 +13,47 @@ import Authenticated from "../../../misc/auth/Authenticated";
 import { push } from "connected-react-router";
 
 class ProductTable extends Component {
-	_editHandler = productToEdit => {
-		this.props.getProductToEdit(productToEdit);
-		this.props.push("/products/add/");
-	};
-
-	_deleteHandler = productId => {
-		this.props.deleteProduct(productId);
-	};
-
-	_viewHandler = productId => {
-		if (this.props.products) {
-			const product = this.props.products.products.find(item => {
-				return item._id === productId;
-			});
-
-			this.props.singleProductRedirect(product);
-		}
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			selectedRow: null
+		};
+	}
 
 	render() {
-		const { products } = this.props;
-
-		const tableheads = [
-			"name",
-			"sku",
-			"price",
-			"promoprice",
-			"stocks",
-			"createdAt"
-		];
-		let rows, productsForEdit;
-
-		if (products && products.products && products.products.length > 0) {
-			rows = products.products.map(product => {
-				let formattedDate = moment(product.createdAt).format("YYYY-MM-DD");
-
-				return {
-					_id: product._id,
-					name: product.name,
-					sku: product.sku,
-					price: product.price ? product.price.normal : "normal",
-					promoprice: product.price ? product.price.promo : "normal",
-					stocks: product.stocks,
-					likes: product.likes,
-					createdAt: formattedDate
-				};
-			});
-		}
-
 		return (
 			<div>
-				<div className="container-fluid my-2 py-2 card shadow-sm">
-					<Filter />
-				</div>
-
-				<Table
-					tableheads={tableheads}
-					rows={rows}
-					handlers={[
-						{ name: "edit", func: this._editHandler },
-						{ name: "delete", func: this._deleteHandler },
-						{ name: "view", func: this._viewHandler }
-					]}
+				<MaterialTable
+					columns={this.props.columns}
+					data={this.props.data}
+					title={
+						<h3 style={{ fontFamily: "Poppins", letterSpacing: "3px" }}>
+							{this.props.title}
+						</h3>
+					}
+					options={{
+						filtering: true,
+						headerStyle: {
+							backgroundColor: "#fae44d",
+							color: "#FFF",
+							fontSize: "15px",
+							fontFamily: "poppins",
+							textTransform: "uppercase"
+						},
+						searchFieldStyle: {
+							fontFamily: "poppins",
+							letterSpacing: "2px"
+						},
+						rowStyle: rowData => ({
+							backgroundColor:
+								this.state.selectedRow &&
+								this.state.selectedRow.tableData.id === rowData.tableData.id
+									? "#EEE"
+									: "#FFF"
+						}),
+						pageSize: 20
+					}}
+					actions={this.props.actions}
 				/>
 			</div>
 		);
@@ -82,7 +61,7 @@ class ProductTable extends Component {
 }
 
 const mapStateToProps = state => ({
-	products: state.products.productsTable
+	products: state.products.products
 });
 
 const mapDispatchToProps = {
