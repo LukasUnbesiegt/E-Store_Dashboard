@@ -24,6 +24,16 @@ class Promotions extends Component {
 					quantity={
 						this.props.promotions ? this.props.promotions.totalItems : 0
 					}
+					navArr={[
+						{
+							linkTo: "/promotions/create/0",
+							title: "creation"
+						},
+						{
+							linkTo: "/promotions/",
+							title: "tables"
+						}
+					]}
 					iconStyle="fa fa-bullhorn"
 					cat="Manage Promotions"
 					linkAdd="/promotions/add"
@@ -40,7 +50,10 @@ class Promotions extends Component {
 									path="/promotions/"
 									render={() => <Table promotions={this.props.promotions} />}
 								/>
-								<Route path="/promotions/add/" component={AddPromotions} />
+								<Route
+									path="/promotions/create/:tab"
+									component={AddPromotions}
+								/>
 								<Route
 									path="/promotions/settings/"
 									component={PromotionsSettings}

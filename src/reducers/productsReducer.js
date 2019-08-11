@@ -39,6 +39,7 @@ export default (state = initialState, action) => {
 				{ title: "Price", field: "price", type: "numeric" },
 				{ title: "Category", field: "category" },
 				{ title: "Brand", field: "brand" },
+				{ title: "Promo", field: "promo" },
 				{ title: "CreatedAt", field: "createdAt", type: "date" },
 				{ title: "Stocks", field: "stocks", type: "numeric" },
 				{ title: "Likes", field: "likes", type: "numeric" },
@@ -60,6 +61,7 @@ export default (state = initialState, action) => {
 					price: product.price.normal,
 					category: product.category.name || "no category",
 					brand: product.brand.name || "no brand",
+					promo: product.promo ? product.promo.name : "no promo",
 					createdAt: moment(product.createAt).format("YYYY MM DD"),
 					stocks: product.stocks || 0,
 					likes: product.likes || 0,
@@ -89,6 +91,10 @@ export default (state = initialState, action) => {
 					brand: {
 						value: product.brand._id,
 						label: product.brand.name
+					},
+					promo: {
+						value: product.promo._id,
+						label: product.promo.name
 					},
 					collections: product.collections.map(collection => {
 						return {

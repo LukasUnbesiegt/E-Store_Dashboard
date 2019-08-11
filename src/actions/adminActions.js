@@ -5,7 +5,8 @@ import {
 	GET_SINGLE_USER,
 	GET_SINGLE_ORDER,
 	GET_PROMOTIONS,
-	GET_SINGLE_PROMOTION
+	GET_SINGLE_PROMOTION,
+	GET_SINGLE_PROMOCOLLECTION
 } from "./types";
 import authService from "../services/authService";
 import axiosService from "../services/axiosService";
@@ -19,6 +20,31 @@ import { toastr } from "react-redux-toastr";
 const URL = process.env.NODE_ENV === "development" ? endpoint : prodEndpoint;
 const axiosInstance = axiosService.getInstance();
 
+export const addPromoCollection = () => {
+	return dispatch => {};
+};
+
+export const getSinglePromoCollection = id => {
+	return dispatch => {
+		axiosInstance
+			.get(`/admin/promocollection/single/${id}`)
+			.then(response => {
+				dispatch({
+					type: GET_SINGLE_PROMOCOLLECTION,
+					payload: response.data.promocollection
+				});
+
+				dispatch(push("/promotions/create/1"));
+			})
+
+			.catch(err => {
+				dispatch({
+					type: GET_ERRORS,
+					payload: err.response.data.errors
+				});
+			});
+	};
+};
 export const deleteUser = userId => {
 	return dispatch => {
 		axiosInstance
@@ -118,7 +144,7 @@ export const getSinglePromo = promoId => {
 					payload: response.data.promotion
 				});
 
-				dispatch(push("/promotions/add"));
+				dispatch(push("/promotions/create/0"));
 			})
 
 			.catch(err => {
@@ -170,6 +196,7 @@ export const addPromo = data => {
 			.post(`/admin/promotion`, data)
 
 			.then(response => {
+				toastr.info("add a promo code");
 				dispatch(reset("addpromotions"));
 				dispatch(getPromotions());
 			})

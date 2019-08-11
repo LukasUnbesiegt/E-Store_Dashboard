@@ -56,7 +56,8 @@ class AddProductForm extends Component {
 			pristine,
 			sendImages,
 			change,
-			variants
+			variants,
+			promocollections
 		} = this.props;
 
 		let finalVariants = [
@@ -159,8 +160,8 @@ class AddProductForm extends Component {
 							/>
 						</div>
 					</div>
-					<h5 className="my-1 py-1">Dimension of Product</h5>
-					<div className="row">
+
+					<div className="row my-2">
 						<div className="col-md-2">
 							<Field
 								component={TextInput}
@@ -203,6 +204,18 @@ class AddProductForm extends Component {
 								styleFrom={{
 									color: "black"
 								}}
+							/>
+						</div>
+
+						<div className="col-md-4">
+							<Field
+								component={Select}
+								name="promo"
+								placeholder="select promo collection"
+								styleFrom={{
+									color: "black"
+								}}
+								options={promocollections || []}
 							/>
 						</div>
 					</div>

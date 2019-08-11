@@ -40,7 +40,7 @@ class AddProduct extends Component {
 	};
 
 	render() {
-		let categories, brands, collections;
+		let categories, brands, collections, promocollections;
 		console.log("initialValues", this.props.initialValues);
 		// we want to refine data from server to fit in need of redux-form values
 		if (this.props.categories) {
@@ -63,6 +63,14 @@ class AddProduct extends Component {
 
 		if (this.props.collections) {
 			collections = this.props.collections.map(collection => {
+				return {
+					label: collection.name,
+					value: collection._id
+				};
+			});
+		}
+		if (this.props.promocollections) {
+			promocollections = this.props.promocollections.map(collection => {
 				return {
 					label: collection.name,
 					value: collection._id
@@ -96,6 +104,7 @@ class AddProduct extends Component {
 const mapStateToProps = state => ({
 	categories: state.products.categories,
 	brands: state.products.brands,
+	promocollections: state.products.promocollections,
 	collections: state.products ? state.products.collections : null,
 	variants: state.products ? state.products.variants : null,
 	initialValues: state.products.productToEdit

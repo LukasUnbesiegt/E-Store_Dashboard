@@ -1,76 +1,63 @@
-export const LOGIN_USER = 'login_user';
-export const REGISTER_USER = 'register_user';
-export const LOGOUT_USER = 'logout_user';
-export const AUTH_USER = 'auth_user';
+export const LOGIN_USER = "login_user";
+export const REGISTER_USER = "register_user";
+export const LOGOUT_USER = "logout_user";
+export const AUTH_USER = "auth_user";
 export const ASYNC_ACTION_START = "ASYNC_ACTION_START";
-export const ASYNC_ACTION_FINISH = "ASYNC_ACTION_FINISH"
-export const ASYNC_ACTION_ERROR = "ASYNC_ACTION_ERROR"
-
-
+export const ASYNC_ACTION_FINISH = "ASYNC_ACTION_FINISH";
+export const ASYNC_ACTION_ERROR = "ASYNC_ACTION_ERROR";
 
 // Errors
-export const GET_ERRORS = 'GET_ERRORS'
-export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const GET_ERRORS = "GET_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
+// PRODUCTS
 
-// PRODUCTS 
-
-export const UPLOAD_IMAGES = 'UPLOAD_IMAGES'
-export const GET_PRODUCTS = 'GET_PRODUCTS'
-export const GET_PRODUCT_EDIT = 'GET_PRODUCT_EDIT'
-export const DELETE_IMAGE = 'DELETE_IMAGE'
-export const CLEAR_IMAGES = 'CLEAR_IMAGES'
-export const GET_PRODUCTS_SHOP = 'GET_PRODUCTS_SHOP'
-export const PRODUCT_SINGLE = 'PRODUCT_SINGLE'
-export const GET_PRODUCTS_BY_CATEGORY = 'GET_PRODUCTS_BY_CATEGORY'
-export const GET_VARIANTS = 'GET_VARIANTS'
-export const GET_COLLECTIONS = 'GET_COLLECTIONS'
-
-
+export const UPLOAD_IMAGES = "UPLOAD_IMAGES";
+export const GET_PRODUCTS = "GET_PRODUCTS";
+export const GET_PRODUCT_EDIT = "GET_PRODUCT_EDIT";
+export const DELETE_IMAGE = "DELETE_IMAGE";
+export const CLEAR_IMAGES = "CLEAR_IMAGES";
+export const GET_PRODUCTS_SHOP = "GET_PRODUCTS_SHOP";
+export const PRODUCT_SINGLE = "PRODUCT_SINGLE";
+export const GET_PRODUCTS_BY_CATEGORY = "GET_PRODUCTS_BY_CATEGORY";
+export const GET_VARIANTS = "GET_VARIANTS";
+export const GET_COLLECTIONS = "GET_COLLECTIONS";
 
 // CARTS
 
-export const ADD_TO_CART = 'ADD_TO_CART';
-export const GET_CART_ITEMS = 'GET_CART_ITEMS'
-export const GET_CART_QTY = 'GET_CART_QTY'
-
+export const ADD_TO_CART = "ADD_TO_CART";
+export const GET_CART_ITEMS = "GET_CART_ITEMS";
+export const GET_CART_QTY = "GET_CART_QTY";
 
 // CATEGORIES
 
-export const GET_BRANDS = 'GET_BRANDS'
-export const GET_CATEGORIES = 'GET_CATEGORIES'
-export const DELETE_CATEGORY = 'DELETE_CATEGORY'
-
+export const GET_BRANDS = "GET_BRANDS";
+export const GET_CATEGORIES = "GET_CATEGORIES";
+export const DELETE_CATEGORY = "DELETE_CATEGORY";
 
 // ADMIN
-export const GET_USERS_ADMIN = 'GET_USERS_ADMIN'
-export const GET_CUSTOMERS_ADMIN = 'GET_CUSTOMERS_ADMIN'
-export const GET_SINGLE_ORDER = 'GET_SINGLE_ORDER'
-export const GET_PROMOTIONS = 'GET_PROMOTIONS'
-export const GET_SINGLE_PROMOTION = 'GET_SINGLE_PROMOTION'
-export const GET_SINGLE_USER = 'GET_SINGLE_USER'
-
+export const GET_USERS_ADMIN = "GET_USERS_ADMIN";
+export const GET_CUSTOMERS_ADMIN = "GET_CUSTOMERS_ADMIN";
+export const GET_SINGLE_ORDER = "GET_SINGLE_ORDER";
+export const GET_PROMOTIONS = "GET_PROMOTIONS";
+export const GET_SINGLE_PROMOTION = "GET_SINGLE_PROMOTION";
+export const GET_SINGLE_USER = "GET_SINGLE_USER";
+export const GET_SINGLE_PROMOCOLLECTION = "GET_SINGLE_PROMOCOLLECTION";
 
 // CUSTOMERS
 
-export const GET_ORDERS = 'GET_ORDERS'
-export const GET_ORDERS_BY_ID = 'GET_ORDERS_BY_ID'
-
-
+export const GET_ORDERS = "GET_ORDERS";
+export const GET_ORDERS_BY_ID = "GET_ORDERS_BY_ID";
 
 //  SETTINGS
-export const GET_STORE_PROFILE = 'GET_STORE_PROFILE'
-export const GET_SINGLE_IMAGE = 'GET_SINGLE_IMAGE'
+export const GET_STORE_PROFILE = "GET_STORE_PROFILE";
+export const GET_SINGLE_IMAGE = "GET_SINGLE_IMAGE";
 
-
-
-export const GET_DELIVERIES = 'GET_DELIVERIES'
-export const SINGLE_DELIVERY = 'SINGLE_DELIVERY'
-
-
+export const GET_DELIVERIES = "GET_DELIVERIES";
+export const SINGLE_DELIVERY = "SINGLE_DELIVERY";
 
 // SITE SETTINGS
-export const GET_SITE_SETTINGS = 'GET_SITE_SETTINGS'
-export const GET_SLIDERS = 'GET_SLIDERS'
-export const GET_ENQURIES = 'GET_ENQURIES'
-export const GET_FAQS = 'GET_FAQS'
+export const GET_SITE_SETTINGS = "GET_SITE_SETTINGS";
+export const GET_SLIDERS = "GET_SLIDERS";
+export const GET_ENQURIES = "GET_ENQURIES";
+export const GET_FAQS = "GET_FAQS";

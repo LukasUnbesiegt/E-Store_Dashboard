@@ -15,6 +15,24 @@ const HeaderBar = styled.div`
 `;
 
 function headerBar(props) {
+	const renderNavPills = navArr => {
+		return navArr.map(nav => {
+			return (
+				<NavLink
+					to={nav.linkTo}
+					className="nav-link mx-1 my-1"
+					activeStyle={{
+						backgroundImage: `linear-gradient(120deg, #f6d365 0%, #fda085 100%)`,
+						color: "white",
+						letterSpacing: "1px"
+					}}
+					style={{ letterSpacing: "1px" }}
+				>
+					{`${nav.title}`}
+				</NavLink>
+			);
+		});
+	};
 	return (
 		<div>
 			<div className="container">
@@ -39,48 +57,7 @@ function headerBar(props) {
 					</div>
 					<div className="col-sm-9 col-md-9 col-lg-9">
 						<div className="card m-2 p-2">
-							<Nav pills>
-								<NavLink
-									to={props.linkAdd}
-									className="nav-link mx-1"
-									activeStyle={{
-										backgroundImage: `linear-gradient(120deg, #f6d365 0%, #fda085 100%)`,
-										color: "white",
-										letterSpacing: "3px"
-									}}
-									style={{ letterSpacing: "3px" }}
-								>
-									{` Add ${props.title}`}
-								</NavLink>
-								<NavLink
-									to={props.linkTable}
-									className="nav-link mx-1"
-									activeStyle={{
-										backgroundImage: `linear-gradient(120deg, #f6d365 0%, #fda085 100%)`,
-										color: "white"
-									}}
-									style={{
-										letterSpacing: "3px"
-									}}
-								>
-									Lists
-								</NavLink>
-								{props.linkSetting ? (
-									<NavLink
-										className="nav-link mx-1"
-										activeStyle={{
-											backgroundImage: `linear-gradient(120deg, #f6d365 0%, #fda085 100%)`,
-											color: "white"
-										}}
-										to={props.linkSetting}
-										style={{
-											letterSpacing: "3px"
-										}}
-									>
-										Settings
-									</NavLink>
-								) : null}
-							</Nav>
+							<Nav pills>{renderNavPills(props.navArr)}</Nav>
 						</div>
 					</div>
 				</div>
