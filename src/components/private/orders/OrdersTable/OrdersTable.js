@@ -70,8 +70,7 @@ class OrdersTable extends Component {
 								this.state.selectedRow.tableData.id === rowData.tableData.id
 									? "#EEE"
 									: "#FFF"
-						}),
-						pageSize: 20
+						})
 					}}
 					actions={[
 						{

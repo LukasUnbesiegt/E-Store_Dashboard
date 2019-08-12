@@ -220,7 +220,9 @@ class AddProductForm extends Component {
 						</div>
 					</div>
 				</div>
-
+				<div>
+					<DetailsFields />
+				</div>
 				<Field
 					component={ProductPhotos}
 					name="images"
@@ -232,7 +234,10 @@ class AddProductForm extends Component {
 					<Field
 						name="details.description"
 						component={Editor}
-						initialContent={initialValues && initialValues.details.description}
+						initialContent={
+							(initialValues && initialValues.details.description) ||
+							"<p>Sample Product Description</p>"
+						}
 						description={"product description"}
 					/>
 				</div>

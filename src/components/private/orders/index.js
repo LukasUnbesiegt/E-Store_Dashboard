@@ -13,14 +13,14 @@ class Orders extends Component {
 	}
 
 	render() {
-		console.log(this.props.orders);
+		console.log("orders", this.props.orders);
 
 		return (
 			<div className="">
 				<HeaderBar
 					title="Orders"
 					sectionTitle="Orders"
-					quantity={this.props.orders ? this.props.orders.totalItems : 0}
+					quantity={this.props.orders ? this.props.orders.data.length : 0}
 					iconStyle="fa fa-shopping-bag"
 					navArr={[
 						{
