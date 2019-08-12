@@ -14,7 +14,8 @@ class EditorComponent extends Component {
 
 	componentWillReceiveProps(prevProps) {
 		const html = prevProps.initialContent;
-		console.log("content", html);
+		console.log("prevprops", prevProps);
+
 		const contentBlock = htmlToDraft(html);
 		const contentState = ContentState.createFromBlockArray(
 			contentBlock.contentBlocks
@@ -27,6 +28,20 @@ class EditorComponent extends Component {
 			});
 		}
 	}
+	componentDidMount = () => {
+		const html = this.props.initialContent;
+		const contentBlock = htmlToDraft(html);
+		const contentState = ContentState.createFromBlockArray(
+			contentBlock.contentBlocks
+		);
+		const editorState = EditorState.createWithContent(contentState);
+
+		if (this.props.initialContent) {
+			this.setState({
+				editorState: editorState
+			});
+		}
+	};
 
 	onEditorStateChange = editorState => {
 		this.setState({

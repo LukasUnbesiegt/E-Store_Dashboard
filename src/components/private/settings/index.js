@@ -7,6 +7,7 @@ import Payment from "./Payment/Payment";
 import Profile from "./StoreProfile/Profile";
 
 import Authenticated from "../../misc/auth/Authenticated";
+import StoreProfile from "./StoreProfile/Profile";
 
 class Settings extends Component {
 	render() {
@@ -48,10 +49,13 @@ class Settings extends Component {
 
 						<div className="col-md-10 col-lg-10">
 							<Switch>
-								<Route exact path="/settings/" component={Currency} />
-								<Route path="/settings/delivery" component={Delivery} />
+								<Route exact path="/settings/" render={() => <Currency />} />
+								<Route path="/settings/delivery" render={() => <Delivery />} />
 								<Route path="/settings/payment" render={() => <Payment />} />
-								<Route path="/settings/storeprofile" component={Profile} />
+								<Route
+									path="/settings/storeprofile"
+									render={() => <StoreProfile />}
+								/>
 							</Switch>
 						</div>
 					</div>
