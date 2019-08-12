@@ -28,7 +28,7 @@ function headerBar(props) {
 					}}
 					style={{ letterSpacing: "1px" }}
 				>
-					{`${nav.title}`}
+					{`${nav.name}`}
 				</NavLink>
 			);
 		});

@@ -5,13 +5,14 @@ import AddUser from "./AddUser/AddUser";
 import UserTable from "./usersTable/UsersTable";
 import UsersTable from "./usersTable/UsersTable";
 import UsersSettings from "./userSettings/UsersSettings";
-import { getUsers } from "../../../actions/adminActions";
+import { getUsers, getOrderById } from "../../../actions/adminActions";
 import Authenticated from "../../misc/auth/Authenticated";
 import { connect } from "react-redux";
 
 class Users extends Component {
 	componentDidMount = () => {
 		this.props.getUsers();
+		this.props.getOrderById();
 	};
 
 	render() {
@@ -22,9 +23,16 @@ class Users extends Component {
 					sectionTitle="Users"
 					iconStyle="fa fa-users"
 					cat="Manage Users"
-					linkAdd="/users/add"
-					linkTable="/users/"
-					linkSetting="/users/settings/"
+					navArr={[
+						{
+							linkTo: "/users/add",
+							name: "add user"
+						},
+						{
+							linkTo: "/users",
+							name: "table"
+						}
+					]}
 					quantity={this.props.users ? this.props.users.totalItems : 0}
 				/>
 				<div className="container-fluid pt-3 mt-3">
@@ -51,7 +59,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-	getUsers
+	getUsers,
+	getOrderById
 };
 
 export default connect(

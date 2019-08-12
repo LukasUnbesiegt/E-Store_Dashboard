@@ -6,7 +6,8 @@ import {
 	GET_SINGLE_ORDER,
 	GET_PROMOTIONS,
 	GET_SINGLE_PROMOTION,
-	GET_SINGLE_PROMOCOLLECTION
+	GET_SINGLE_PROMOCOLLECTION,
+	GET_ORDERS
 } from "./types";
 import authService from "../services/authService";
 import axiosService from "../services/axiosService";
@@ -241,7 +242,20 @@ export const getOrderById = id => {
 			.catch(err => {});
 	};
 };
+export const getOrders = () => {
+	return dispatch => {
+		axiosInstance
+			.get("/admin/orders")
+			.then(response => {
+				dispatch({
+					type: GET_ORDERS,
+					payload: response.data
+				});
+			})
 
+			.catch(err => {});
+	};
+};
 export const getUsers = (data = {}) => {
 	return dispatch => {
 		axiosInstance

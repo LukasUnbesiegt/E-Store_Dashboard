@@ -15,6 +15,13 @@ import {
 	singleProductRedirect
 } from "../../../actions/productsActions";
 class Products extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			selectedRow: null
+		};
+	}
+
 	_editHandler = productToEdit => {
 		this.props.getProductToEdit(productToEdit);
 	};
@@ -41,10 +48,18 @@ class Products extends Component {
 					title="Products"
 					sectionTitle="Products"
 					quantity={products ? products.totalItems : 0}
+					navArr={[
+						{
+							linkTo: "/products/add",
+							name: "add product"
+						},
+						{
+							linkTo: "/products/",
+							name: "table"
+						}
+					]}
 					iconStyle="fa fa-archive"
 					cat="Manage Categories"
-					linkAdd="/products/add"
-					linkTable="/products"
 				/>
 
 				<div className="container-fluid pt-3 mt-3">
@@ -61,6 +76,29 @@ class Products extends Component {
 											}
 											title="Products"
 											data={this.props.products && this.props.products.data}
+											options={{
+												filtering: true,
+												headerStyle: {
+													backgroundColor: "#fae44d",
+													color: "#FFF",
+													fontSize: "15px",
+													fontFamily: "poppins",
+													textTransform: "uppercase"
+												},
+												searchFieldStyle: {
+													fontFamily: "poppins",
+													letterSpacing: "2px"
+												},
+												rowStyle: rowData => ({
+													backgroundColor:
+														this.state.selectedRow &&
+														this.state.selectedRow.tableData.id ===
+															rowData.tableData.id
+															? "#EEE"
+															: "#FFF"
+												}),
+												pageSize: 20
+											}}
 											actions={[
 												{
 													tooltip: "edit product",

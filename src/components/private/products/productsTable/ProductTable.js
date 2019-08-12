@@ -13,13 +13,6 @@ import Authenticated from "../../../misc/auth/Authenticated";
 import { push } from "connected-react-router";
 
 class ProductTable extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			selectedRow: null
-		};
-	}
-
 	render() {
 		return (
 			<div>
@@ -31,28 +24,7 @@ class ProductTable extends Component {
 							{this.props.title}
 						</h3>
 					}
-					options={{
-						filtering: true,
-						headerStyle: {
-							backgroundColor: "#fae44d",
-							color: "#FFF",
-							fontSize: "15px",
-							fontFamily: "poppins",
-							textTransform: "uppercase"
-						},
-						searchFieldStyle: {
-							fontFamily: "poppins",
-							letterSpacing: "2px"
-						},
-						rowStyle: rowData => ({
-							backgroundColor:
-								this.state.selectedRow &&
-								this.state.selectedRow.tableData.id === rowData.tableData.id
-									? "#EEE"
-									: "#FFF"
-						}),
-						pageSize: 20
-					}}
+					options={this.props.options}
 					actions={this.props.actions}
 				/>
 			</div>

@@ -27,11 +27,11 @@ class Promotions extends Component {
 					navArr={[
 						{
 							linkTo: "/promotions/create/0",
-							title: "creation"
+							name: "creation"
 						},
 						{
 							linkTo: "/promotions/",
-							title: "tables"
+							name: "tables"
 						}
 					]}
 					iconStyle="fa fa-bullhorn"

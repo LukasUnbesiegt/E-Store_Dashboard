@@ -22,9 +22,17 @@ class Customers extends Component {
 					title="Customers"
 					sectionTitle="Customers"
 					iconStyle="fa fa-address-card"
+					navArr={[
+						{
+							linkTo: "/customers/add",
+							name: "user enquires"
+						},
+						{
+							linkTo: "/customers",
+							name: "table"
+						}
+					]}
 					cat="Manage Customers"
-					linkAdd="/customers/add"
-					linkTable="/customers/"
 					quantity={this.props.customers ? this.props.customers.totalItems : 0}
 				/>
 

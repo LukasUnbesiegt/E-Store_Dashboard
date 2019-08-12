@@ -34,6 +34,8 @@ import {
 	getCollections,
 	getProductsToTable
 } from "../../actions/productsActions";
+import { getOrders } from "../../actions/adminActions";
+import { getSiteSettings } from "../../actions/siteSettings/siteSettings";
 class AdminRoutes extends Component {
 	state = {
 		dropdownOpen: false,
@@ -46,6 +48,8 @@ class AdminRoutes extends Component {
 		this.props.getBrands();
 		this.props.getCollections();
 		this.props.getProductsToTable();
+		this.props.getOrders();
+		this.props.getSiteSettings();
 	};
 
 	toggle = () => {
@@ -157,7 +161,9 @@ const mapDispatchToProps = {
 	getBrands,
 	getCategories,
 	getCollections,
-	getProductsToTable
+	getProductsToTable,
+	getOrders,
+	getSiteSettings
 };
 
 export default connect(

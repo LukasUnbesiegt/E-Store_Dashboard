@@ -86,7 +86,7 @@ export const createSlider = (slider, siteContentId) => {
 			.post(`${URL}api/v1/contents/slider`, { slider, siteContentId })
 			.then(data => {
 				dispatch(getSliders());
-				dispatch(push("/admin/contents/headerimgs"));
+				dispatch(push("/contents/headerimgs"));
 			})
 			.catch(() => {});
 	};
