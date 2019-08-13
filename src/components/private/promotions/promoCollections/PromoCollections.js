@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import FormPromoCollection from "./FormPromoCollection";
 import { clearForm } from "../../../../actions/helpers";
+import {
+	addPromoCollection,
+	editPromoCollection
+} from "../../../../actions/adminActions";
 class PromoCollections extends Component {
-	handleSubmitHandler = () => {
+	handleSubmitHandler = data => {
 		if (this.props.initialValues) {
-			// this.props.editPromo(this.props.initialValues._id, data);
+			this.props.editPromoCollection(this.props.initialValues._id, data);
 		} else {
-			// this.props.ad(data);
+			this.props.addPromoCollection(data);
 		}
 	};
 
@@ -25,11 +29,13 @@ class PromoCollections extends Component {
 }
 
 const mapStateToProps = state => ({
-	initialValues: state.admin.promocollection
+	initialValues: state.admin.promoCollection
 });
 
 const mapDispatchToProps = {
-	clearForm
+	clearForm,
+	addPromoCollection,
+	editPromoCollection
 };
 
 export default connect(

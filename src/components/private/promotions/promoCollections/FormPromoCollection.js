@@ -7,7 +7,7 @@ import moment from "moment";
 
 class AddPromotionsForm extends PureComponent {
 	componentWillUnmount = () => {
-		// this.props.clearForm('')
+		this.props.clearForm("GET_SINGLE_PROMOCOLLECTION");
 	};
 
 	render() {

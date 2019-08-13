@@ -6,13 +6,17 @@ import { connect } from "react-redux";
 import Authenticated from "../../misc/auth/Authenticated";
 import Table from "./PromotionsTable/PromotionsTable";
 
-import { getPromotions } from "../../../actions/adminActions";
+import {
+	getPromotions,
+	getPromoCollections
+} from "../../../actions/adminActions";
 import AddPromotions from "./AddPromotions/AddPromotions";
 import PromotionsSettings from "./PromotionsSettings/PromotionSettings";
 
 class Promotions extends Component {
 	componentDidMount = () => {
 		this.props.getPromotions();
+		this.props.getPromoCollections();
 	};
 
 	render() {
@@ -48,7 +52,12 @@ class Promotions extends Component {
 								<Route
 									exact
 									path="/promotions/"
-									render={() => <Table promotions={this.props.promotions} />}
+									render={() => (
+										<Table
+											promotions={this.props.promotions}
+											promoCollections={this.props.promoCollections}
+										/>
+									)}
 								/>
 								<Route
 									path="/promotions/create/:tab"
@@ -68,11 +77,13 @@ class Promotions extends Component {
 }
 
 const mapStateToProps = state => ({
-	promotions: state.admin.promotions
+	promotions: state.admin.promotions,
+	promoCollections: state.admin.promoCollections
 });
 
 const mapDispatchToProps = {
-	getPromotions
+	getPromotions,
+	getPromoCollections
 };
 
 export default connect(

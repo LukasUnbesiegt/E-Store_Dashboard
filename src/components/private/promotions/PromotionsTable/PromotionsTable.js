@@ -3,7 +3,9 @@ import Table from "../../../misc/table/Table";
 import moment from "moment";
 import {
 	deletePromotion,
-	getSinglePromo
+	getSinglePromo,
+	deletePromoCollection,
+	getSinglePromoCollection
 } from "../../../../actions/adminActions";
 import { connect } from "react-redux";
 import {
@@ -43,11 +45,11 @@ class PromotionsTable extends Component {
 		alert("Nothing to view for promotion");
 	};
 	_editHandler2 = id => {
-		this.props.getSinglePromo(id);
+		this.props.getSinglePromoCollection(id);
 	};
 
 	_deleteHandler2 = id => {
-		this.props.deletePromotion(id);
+		this.props.deletePromoCollection(id);
 	};
 
 	_viewHandler2 = () => {
@@ -85,8 +87,8 @@ class PromotionsTable extends Component {
 		});
 	};
 	render() {
-		let rows;
-		const { promotions } = this.props;
+		let rows, rows2;
+		const { promotions, promoCollections } = this.props;
 		let tableheads = ["name", "percent", "quantity", "createdAt"];
 		let tableheads2 = ["name", "percent", "from", "to", "createdAt"];
 
@@ -101,6 +103,23 @@ class PromotionsTable extends Component {
 					quantity: promotion.quantity,
 					createdAt: formattedDate || "no date",
 					_id: promotion._id
+				};
+			});
+		}
+		if (promoCollections) {
+			rows2 = promoCollections.promoCollections.map(promoCollection => {
+				let formattedDate =
+					moment(promoCollection.createdAt).format("YYYY-MM-DD") || "no date";
+				let from =
+					moment(promoCollection.start).format("YYYY-MM-DD") || "no date";
+				let to = moment(promoCollection.end).format("YYYY-MM-DD") || "no date";
+				return {
+					name: promoCollection.name,
+					percent: promoCollection.percent,
+					from,
+					to,
+					createdAt: formattedDate || "no date",
+					_id: promoCollection._id
 				};
 			});
 		}
@@ -125,7 +144,7 @@ class PromotionsTable extends Component {
 					<TabPane tabId="1">
 						<Table
 							tableheads={tableheads2}
-							rows={[]}
+							rows={rows2}
 							handlers={[
 								{ name: "edit", func: this._editHandler2 },
 								{ name: "delete", func: this._deleteHandler2 },
@@ -143,7 +162,9 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
 	deletePromotion,
-	getSinglePromo
+	getSinglePromo,
+	deletePromoCollection,
+	getSinglePromoCollection
 };
 
 export default connect(

@@ -8,6 +8,8 @@ import {
 	GET_SINGLE_PROMOTION,
 	GET_SINGLE_USER,
 	GET_STORE_PROFILE,
+	GET_PROMOCOLLECTIONS,
+	GET_SINGLE_PROMOCOLLECTION,
 	GET_ORDERS
 } from "../actions/types";
 import moment from "moment";
@@ -21,8 +23,13 @@ export default (state = initialState, action) => {
 			return { ...state, customers: action.payload };
 		case GET_SINGLE_ORDER:
 			return { ...state, order: action.payload };
+		case GET_SINGLE_PROMOCOLLECTION:
+			return { ...state, promoCollection: action.payload };
 		case GET_PROMOTIONS:
 			return { ...state, promotions: action.payload };
+
+		case GET_PROMOCOLLECTIONS:
+			return { ...state, promoCollections: action.payload };
 		case GET_SINGLE_PROMOTION:
 			return { ...state, promotion: action.payload };
 		case GET_SINGLE_USER:

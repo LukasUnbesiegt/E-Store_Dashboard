@@ -22,6 +22,8 @@ class AddProduct extends Component {
 			collections: data.collections.map(collection => {
 				return collection.value;
 			}),
+			promo: data.promo.value,
+			featured: data.featured,
 			dimension: data.dimension,
 			stocks: data.stocks,
 			likes: data.likes,
@@ -70,12 +72,15 @@ class AddProduct extends Component {
 			});
 		}
 		if (this.props.promocollections) {
-			promocollections = this.props.promocollections.map(collection => {
-				return {
-					label: collection.name,
-					value: collection._id
-				};
-			});
+			console.log("promocollection", this.props.promocollections);
+			promocollections = this.props.promocollections.promoCollections.map(
+				collection => {
+					return {
+						label: collection.name,
+						value: collection._id
+					};
+				}
+			);
 		}
 
 		return (
@@ -87,6 +92,7 @@ class AddProduct extends Component {
 							<AddProductForm
 								categories={categories}
 								brands={brands}
+								promocollections={promocollections}
 								submitCallback={this.handleSubmitHandler}
 								initialValues={this.props.initialValues}
 								clearForm={this.props.clearForm}
@@ -104,7 +110,7 @@ class AddProduct extends Component {
 const mapStateToProps = state => ({
 	categories: state.products.categories,
 	brands: state.products.brands,
-	promocollections: state.products.promocollections,
+	promocollections: state.admin.promoCollections,
 	collections: state.products ? state.products.collections : null,
 	variants: state.products ? state.products.variants : null,
 	initialValues: state.products.productToEdit

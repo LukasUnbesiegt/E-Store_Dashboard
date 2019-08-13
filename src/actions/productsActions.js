@@ -255,7 +255,9 @@ export const addVariant = (dataToSubmit) => {
 
                     toastr.success('Variant added')
                     dispatch(getVariants())
+                    dispatch(reset('addvarient'))
                     dispatch(asyncActionFinish())
+
 
 
 

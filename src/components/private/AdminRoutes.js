@@ -28,13 +28,15 @@ import TopBar from "./topBar/TopBar";
 import Brand from "./brands/index";
 import Category from "./categories/Category";
 import Collections from "./collections/index";
+import Variants from "./variants/Category";
 import {
 	getCategories,
 	getBrands,
 	getCollections,
-	getProductsToTable
+	getProductsToTable,
+	getVariants
 } from "../../actions/productsActions";
-import { getOrders } from "../../actions/adminActions";
+import { getOrders, getPromoCollections } from "../../actions/adminActions";
 import {
 	getSiteSettings,
 	getFAQs,
@@ -60,6 +62,8 @@ class AdminRoutes extends Component {
 		this.props.getEnquries();
 		this.props.getFAQs();
 		this.props.getSliders();
+		this.props.getPromoCollections();
+		this.props.getVariants();
 	};
 
 	toggle = () => {
@@ -142,6 +146,7 @@ class AdminRoutes extends Component {
 									<Route path="/products" render={props => <Products />} />
 									<Route path="/brand" render={props => <Brand />} />
 									<Route path="/category" render={props => <Category />} />
+									<Route path="/variant" render={props => <Variants />} />
 									<Route
 										path="/collections"
 										render={props => <Collections />}
@@ -177,7 +182,9 @@ const mapDispatchToProps = {
 	getDeliveries,
 	getEnquries,
 	getFAQs,
-	getSliders
+	getSliders,
+	getPromoCollections,
+	getVariants
 };
 
 export default connect(

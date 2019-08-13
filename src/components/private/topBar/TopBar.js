@@ -6,6 +6,7 @@ import {
 	DropdownMenu,
 	DropdownItem
 } from "reactstrap";
+import { LANDING_URL } from "../../../config";
 class TopBar extends Component {
 	renderSettingBar = () => {
 		return (
@@ -89,7 +90,14 @@ class TopBar extends Component {
 
 					<div className="ml-auto">
 						<NavLink
-							to="/"
+							onClick={() => {
+								window.open(
+									process.env.NODE_ENV === "production"
+										? LANDING_URL
+										: "http://localhost:3001/",
+									"_blank"
+								);
+							}}
 							className="nav-link mt-2"
 							style={{ color: "#fff" }}
 							target="_blank"
