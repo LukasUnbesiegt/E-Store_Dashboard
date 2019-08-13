@@ -70,10 +70,13 @@
 				// A function to process messages received by the window.
 				function receiveMessage(e) {
 					// Check to make sure that this message came from the correct domain.
-					if (e.origin !== "http://localhost:3001") return;
-					// Update the div element to display the message.
+					if (
+						e.origin !== "http://localhost:3001" &&
+						e.origin !== "https://wwww.jharveypens.com"
+					)
+						// Update the div element to display the message.
 
-					localStorage.setItem("auth_token", e.data);
+						localStorage.setItem("auth_token", e.data);
 				}
 				window.addEventListener("message", receiveMessage);
 			};
