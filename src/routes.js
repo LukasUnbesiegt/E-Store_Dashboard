@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { auth } from "./actions/userActions";
 import AdminRoutes from "./components/private/AdminRoutes";
 import ModalManager from "./components/misc/modalManager/modalManager";
-import { prodEndpoint } from "./config";
+import { LANDING_URL } from "./config";
 class Routes extends Component {
 	componentDidMount = () => {
 		window.onload = function() {
@@ -13,7 +13,7 @@ class Routes extends Component {
 			// A function to process messages received by the window.
 			function receiveMessage(e) {
 				// Check to make sure that this message came from the correct domain.
-				if (e.origin !== "http://localhost:3001" && e.origin !== prodEndpoint)
+				if (e.origin !== LANDING_URL && e.origin !== "http://localhost:3001")
 					return;
 				// Update the div element to display the message.
 
