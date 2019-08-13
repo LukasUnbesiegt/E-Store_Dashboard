@@ -92,10 +92,10 @@ export default (state = initialState, action) => {
 						value: product.brand._id,
 						label: product.brand.name
 					},
-					promo: {
-						value: product.promo._id,
-						label: product.promo.name
-					},
+					// promo: {
+					// 	value: product.promo._id,
+					// 	label: product.promo.name
+					// },
 					collections: product.collections.map(collection => {
 						return {
 							value: collection._id,

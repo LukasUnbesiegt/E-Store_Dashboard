@@ -10,7 +10,7 @@ import {
 	GET_STORE_PROFILE,
 	GET_ORDERS
 } from "../actions/types";
-
+import moment from "moment";
 const initialState = {};
 
 export default (state = initialState, action) => {
@@ -52,12 +52,22 @@ export default (state = initialState, action) => {
 					title: "Name",
 					field: "name"
 				},
+				{
+					title: "Phone",
+					field: "phone"
+				},
 
-				{ title: "CreatedAt", field: "createdAt", type: "date" }
+				{ title: "OrderDate", field: "createdAt", type: "date" },
+				{ title: "DesiredDate", field: "desireDate", type: "date" }
 			];
 			let data = orders.map(order => {
 				return {
-					id: order._id
+					id: order._id,
+					status: order.status,
+					name: order.shippingAddress.name || "no namee",
+					phone: order.shippingAddress.phone || "no phone number",
+					createdAt: moment(order.createdAt).format("YYYY MM DD"),
+					desireDate: moment(order.desireDate).format("YYYY MM DD")
 				};
 			});
 			return { ...state, orders: { columns, orders, data } };

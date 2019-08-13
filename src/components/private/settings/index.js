@@ -49,7 +49,7 @@ class Settings extends Component {
 
 						<div className="col-md-10 col-lg-10">
 							<Switch>
-								<Route exact path="/settings/" render={() => <Currency />} />
+								<Route exact path="/settings/" render={() => <Delivery />} />
 								<Route path="/settings/delivery" render={() => <Delivery />} />
 								<Route path="/settings/payment" render={() => <Payment />} />
 								<Route

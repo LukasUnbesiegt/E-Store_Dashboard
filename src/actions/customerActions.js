@@ -22,7 +22,6 @@ const axiosInstance = axiosService.getInstance();
 export const getEnquries = () => {
 	return dispatch => {
 		axios.get(`${URL}api/v1/customers/enquiry`).then(response => {
-			console.log("happen");
 			dispatch({
 				type: GET_ENQURIES,
 				payload: response.data.enquries
@@ -72,6 +71,7 @@ export const changeStatus = ({ status, orderId }) => {
 			.then(response => {
 				dispatch(filtersOrders({}, 1));
 				toastr.info("changed status");
+				dispatch(getOrders());
 			});
 	};
 };

@@ -17,7 +17,7 @@ class Payment extends Component {
 							className="btn "
 							to="/settings/payment/local"
 							style={{
-								backgroundImage: `linear-gradient(120deg, #f6d365 0%, #fda085 100%)`,
+								backgroundImage: `linear-gradient(120deg, #fae54d 0%, #fae54d 100%)`,
 								color: "white"
 							}}
 						>
@@ -27,7 +27,7 @@ class Payment extends Component {
 							className="btn "
 							to="/settings/payment/inter"
 							style={{
-								backgroundImage: `linear-gradient(120deg, #f6d365 0%, #fda085 100%)`,
+								backgroundImage: `linear-gradient(120deg, #fae54d 0%, #fae54d 100%)`,
 								color: "white"
 							}}
 						>

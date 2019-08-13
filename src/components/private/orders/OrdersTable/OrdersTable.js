@@ -28,17 +28,18 @@ class OrdersTable extends Component {
 
 	_viewHandler = id => {
 		this.props.getOrderById(id);
-		this.props.history.push("/admin/orders/details/");
+		this.props.history.push("/orders/details/");
 	};
 
 	_changeStatusDelivery = id => {
 		this.props.changeStatus({ status: "DELIVERED", orderId: id });
 	};
-	_changeStatusInHouse = id => {
-		this.props.changeStatus({ status: "INHOUSE", orderId: id });
-	};
+
 	_changeStatusShipping = id => {
 		this.props.changeStatus({ status: "SHIPPING", orderId: id });
+	};
+	_changeStatusInhouse = id => {
+		this.props.changeStatus({ status: "INHOUSE", orderId: id });
 	};
 
 	render() {
@@ -75,8 +76,32 @@ class OrdersTable extends Component {
 					actions={[
 						{
 							tooltip: "Check Order Detail",
-							icon: "check",
-							onClick: (evt, data) => {}
+							icon: "search",
+							onClick: (evt, data) => {
+								console.log("id", data);
+								this._viewHandler(data.id);
+							}
+						},
+						{
+							tooltip: "SET SHIPPING",
+							icon: "flight_takeoff",
+							onClick: (evt, data) => {
+								this._changeStatusShipping(data.id);
+							}
+						},
+						{
+							tooltip: "SET DELIVERED",
+							icon: "done",
+							onClick: (evt, data) => {
+								this._changeStatusDelivery(data.id);
+							}
+						},
+						{
+							tooltip: "SET INHOUSE BACK",
+							icon: "home",
+							onClick: (evt, data) => {
+								this._changeStatusInhouse(data.id);
+							}
 						}
 					]}
 				/>

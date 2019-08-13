@@ -16,12 +16,20 @@ class index extends Component {
 					<div className="my-2 py-2">
 						<Nav pills>
 							<li className="nav-item">
-								<NavLink to="/contents/faqs/create" className="nav-link">
+								<NavLink
+									to="/contents/faqs/create"
+									className="nav-link"
+									activeStyle={{ backgroundColor: "#fae54d" }}
+								>
 									Create FAQ
 								</NavLink>
 							</li>
 							<li className="nav-item">
-								<NavLink to="/contents/faqs" className="nav-link">
+								<NavLink
+									to="/contents/faqs"
+									className="nav-link"
+									activeStyle={{ backgroundColor: "#fae54d" }}
+								>
 									FAQ Lists
 								</NavLink>
 							</li>

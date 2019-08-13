@@ -23,7 +23,7 @@ class index extends Component {
 									to="/contents/headerimgs/create"
 									className="nav-link"
 									style={{
-										backgroundImage: `linear-gradient(120deg, #f6d365 0%, #fda085 100%)`
+										backgroundImage: `linear-gradient(120deg, #fae54d 0%, #fae54d 100%)`
 									}}
 								>
 									Create Slider Image
@@ -34,7 +34,7 @@ class index extends Component {
 									to="/contents/headerimgs"
 									className="nav-link"
 									style={{
-										backgroundImage: `linear-gradient(120deg, #f6d365 0%, #fda085 100%)`
+										backgroundImage: `linear-gradient(120deg, #fae54d 0%, #fae54d 100%)`
 									}}
 								>
 									Sliders

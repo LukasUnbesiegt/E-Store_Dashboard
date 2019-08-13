@@ -19,6 +19,7 @@ export const reducers = history =>
 		router: connectRouter(history),
 		form: formReducer,
 		user: userReducer,
+		customer: customersReducer,
 		toastr: toastrReducer,
 		async: asyncReducer,
 		modal: modalReducer,
