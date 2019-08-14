@@ -217,7 +217,6 @@ export const getPromoCollections = data => {
 			.post(`/admin/promocollect/all`, data)
 
 			.then(response => {
-				console.log("promo", response.data);
 				dispatch({
 					type: GET_PROMOCOLLECTIONS,
 					payload: response.data

@@ -14,7 +14,7 @@ class Payment extends Component {
 				<div className="my-2 py-2 text-center">
 					<div className="btn-group" role="group" aria-label="">
 						<NavLink
-							className="btn "
+							className="btn mr-2 "
 							to="/settings/payment/local"
 							style={{
 								backgroundImage: `linear-gradient(120deg, #fae54d 0%, #fae54d 100%)`,

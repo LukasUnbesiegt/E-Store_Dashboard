@@ -223,35 +223,7 @@ class ProductPhotos extends Component {
                     <div className="row">
 
                         <div className="col-md-4 col-lg-4">
-{/* 
-                            <DropZone onDrop={this.onDrop} multiple={false}>
-                                <div style={{ paddingTop: '30px', textAlign: 'center' }}>
-                                    <span>please upload or drop photos here</span>
 
-                                </div>
-                            </DropZone> */}
-                            {/* <Dropzone onDrop={this.onDrop}>
-						{({ getRootProps, getInputProps }) => (
-							<section>
-								<div className="container">
-									<div className="row">
-										<div className="col-md-6">
-											<div class="custom-file" {...getRootProps()}>
-												<input
-													type="file"
-													class="custom-file-input"
-													id="customFile"
-													{...getInputProps()}
-												/>
-											
-											</div>
-										</div>
-							
-									</div>
-								</div>
-							</section>
-						)}
-                    </Dropzone> */}
                     <Dropzone
                      onDrop={this.onDrop }  
                      minSize={0}

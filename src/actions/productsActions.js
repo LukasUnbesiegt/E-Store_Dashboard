@@ -1,4 +1,4 @@
-import { GET_ERRORS, GET_CATEGORIES, UPLOAD_IMAGES, DELETE_IMAGE, GET_COLLECTIONS, GET_VARIANTS, CLEAR_IMAGES, GET_PRODUCTS, GET_PRODUCTS_BY_CATEGORY, GET_PRODUCT_EDIT, GET_BRANDS, GET_PRODUCTS_SHOP, PRODUCT_SINGLE, GET_CART_ITEMS, CLEAR_ERRORS } from './types';
+import { GET_ERRORS, GET_CATEGORIES, UPLOAD_IMAGES, DELETE_IMAGE, UPLOADED_IMAGE , GET_COLLECTIONS, GET_VARIANTS, CLEAR_IMAGES, GET_PRODUCTS, GET_PRODUCTS_BY_CATEGORY, GET_PRODUCT_EDIT, GET_BRANDS, GET_PRODUCTS_SHOP, PRODUCT_SINGLE, GET_CART_ITEMS, CLEAR_ERRORS } from './types';
 import axios from 'axios'
 import { asyncActionStart, asyncActionFinish } from './asyncActions'
 import axiosService from '../services/axiosService'
@@ -639,6 +639,38 @@ export const getCategories = () => {
 }
 
 
+
+export const sendSingleImage = (blob) => {
+
+
+    const formData = new FormData()
+   
+        formData.append(`file`, blob)
+
+    
+    const config = {
+        header: { 'content-type': 'multipart/form-data' }
+    }
+
+    toastr.success('image is uploading', 'wait a sec')
+    const request = axiosInstance.post(`/upload/s3single`, formData, config)
+        .then((response) => {
+            console.log('image' , response.data)
+            toastr.success('success')
+            return response.data
+
+        })
+        .catch((err) => {
+            toastr.error('error in uploading image')
+            console.log(err)
+        })
+
+    return {
+        type: 'UPLOADED_IMAGE',
+        payload: request
+    }
+
+}
 
 
 export const sendImages = (blobs) => {

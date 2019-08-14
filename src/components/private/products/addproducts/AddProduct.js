@@ -17,12 +17,14 @@ class AddProduct extends Component {
 			name: data.name,
 			price: data.price,
 			details: data.details,
-			category: data.category.value,
-			brand: data.brand.value,
-			collections: data.collections.map(collection => {
-				return collection.value;
-			}),
-			promo: data.promo.value,
+			category: data.category ? data.category.value : null,
+			brand: data.brand ? data.brand.value : null,
+			collections: data.collections
+				? data.collections.map(collection => {
+						return collection.value;
+				  })
+				: [],
+			promo: data.promo ? data.promo.value : null,
 			featured: data.featured,
 			dimension: data.dimension,
 			stocks: data.stocks,

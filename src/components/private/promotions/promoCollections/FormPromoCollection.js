@@ -3,6 +3,7 @@ import { reduxForm, Field, Fields } from "redux-form";
 import TextInput from "../../../misc/forms/inputs/TextInput";
 import SelectInput from "../../../misc/forms/inputs/SelectInput";
 import DateRangePickerWrapper from "../../../misc/forms/dates/DateRangeInput";
+import PhotoUpload from "../../../misc/forms/files/photoUpload/SinglePhotoUpload";
 import moment from "moment";
 
 class AddPromotionsForm extends PureComponent {
@@ -67,7 +68,7 @@ class AddPromotionsForm extends PureComponent {
 				</div>
 
 				<div className="row my-1 py-1">
-					<div className="col-md-6">
+					<div className="col-md-12">
 						<Fields
 							names={["start", "end"]}
 							component={renderDates}
@@ -75,7 +76,9 @@ class AddPromotionsForm extends PureComponent {
 							format={formatDates}
 						/>
 					</div>
-					<div className="col-md-6">
+				</div>
+				<div className="row">
+					<div className="col-md-12">
 						<Field
 							component={TextInput}
 							name="image"
@@ -85,6 +88,11 @@ class AddPromotionsForm extends PureComponent {
 								color: "black"
 							}}
 						/>
+						{/* <Field
+							component={PhotoUpload}
+							name="image"
+							initialImage={initialValues && initialValues.image}
+						/> */}
 					</div>
 				</div>
 
