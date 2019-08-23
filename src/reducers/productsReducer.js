@@ -79,9 +79,15 @@ export default (state = initialState, action) => {
 
 		case GET_PRODUCT_EDIT:
 			let product = action.payload;
-			let refinedProduct;
-
+			let refinedProduct, promo;
 			if (product) {
+				if (product.promo) {
+					promo = {
+						value: product.promo._id,
+						label: product.promo.name
+					};
+				}
+
 				refinedProduct = {
 					...product,
 					category: {
@@ -92,10 +98,7 @@ export default (state = initialState, action) => {
 						value: product.brand._id,
 						label: product.brand.name
 					},
-					// promo: {
-					// 	value: product.promo._id,
-					// 	label: product.promo.name
-					// },
+					promo,
 					collections: product.collections.map(collection => {
 						return {
 							value: collection._id,

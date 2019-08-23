@@ -958,9 +958,9 @@ export const getProductToEdit = (productId) => {
 
 export const editProduct = (productId, dataToEdit) => {
 
-
+  
     return (dispatch) => {
-        dispatch(asyncActionStart())
+      dispatch(asyncActionStart())
         axiosInstance.post(`products/edit/${productId}`, dataToEdit)
             .then((response) => {
 
@@ -969,7 +969,6 @@ export const editProduct = (productId, dataToEdit) => {
                 dispatch(reset('addproduct'))
                 dispatch(getProductsToTable())
                 dispatch(asyncActionFinish())
-
             })
 
 

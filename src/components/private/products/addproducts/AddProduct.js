@@ -10,6 +10,7 @@ import {
 	sendImages
 } from "../../../../actions/productsActions";
 import { clearForm } from "../../../../actions/helpers";
+import { isEmpty } from "../../../../utils/isEmpty";
 
 class AddProduct extends Component {
 	handleSubmitHandler = data => {
@@ -17,8 +18,9 @@ class AddProduct extends Component {
 			name: data.name,
 			price: data.price,
 			details: data.details,
-			category: data.category ? data.category.value : null,
-			brand: data.brand ? data.brand.value : null,
+			category: !isEmpty(data.category) && data.category.value,
+			brand: !isEmpty(data.brand) && data.brand.value,
+			promo: !isEmpty(data.promo) && data.promo.value,
 			collections: data.collections
 				? data.collections.map(collection => {
 						return collection.value;
