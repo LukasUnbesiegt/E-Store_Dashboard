@@ -113,13 +113,6 @@ class Products extends Component {
 													onClick: (evt, data) => {
 														this._deleteHandler(data._id);
 													}
-												},
-												{
-													tooltip: "view product",
-													icon: "search",
-													onClick: (evt, data) => {
-														alert("coming soon");
-													}
 												}
 											]}
 										/>
