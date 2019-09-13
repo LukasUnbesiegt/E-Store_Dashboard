@@ -546,6 +546,7 @@ export const getProductsToTable = () => {
         axiosInstance.post(`/products/all`)
             .then((response) => {
 
+                console.log('products' , response.data);
                 dispatch({
                     type: GET_PRODUCTS,
                     payload: response.data

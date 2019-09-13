@@ -59,16 +59,22 @@ export default (state = initialState, action) => {
 					_id: product._id,
 					name: product.name,
 					price: product.price.normal,
-					category: product.category.name || "no category",
-					brand: product.brand.name || "no brand",
+					category: product.category ? product.category.name : "no category",
+					brand: product.brand ? product.brand.name : "no brand",
 					promo: product.promo ? product.promo.name : "no promo",
 					createdAt: moment(product.createAt).format("YYYY MM DD"),
 					stocks: product.stocks || 0,
 					likes: product.likes || 0,
-					length: product.dimension.length || "no length found",
-					weight: product.dimension.weight || "no weight found",
-					width: product.dimension.width || "no width found",
-					height: product.dimension.height || "no height found"
+					length: product.dimension
+						? product.dimension.length
+						: "no length found",
+					weight: product.dimension
+						? product.dimension.weight
+						: "no weight found",
+					width: product.dimension ? product.dimension.width : "no width found",
+					height: product.dimension
+						? product.dimension.height
+						: "no height found"
 				};
 			});
 
@@ -91,8 +97,8 @@ export default (state = initialState, action) => {
 				refinedProduct = {
 					...product,
 					category: {
-						value: product.category._id,
-						label: product.category.name
+						value: product.category ? product.category._id : null,
+						label: product.category ? product.category.name : null
 					},
 					brand: {
 						value: product.brand._id,
