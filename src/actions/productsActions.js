@@ -677,6 +677,7 @@ export const sendSingleImage = (blob) => {
 export const sendImages = (blobs) => {
 
 
+console.log('blobs' , blobs);
     const formData = new FormData()
     for (let i = 0; i < blobs.length; i++) {
 
@@ -690,7 +691,7 @@ export const sendImages = (blobs) => {
     }
 
 
-    console.log(formData);
+    console.log('formData' ,formData);
     toastr.success('images are uploading', 'wait a sec')
     const request = axiosInstance.post(`/upload/s3`, formData, config)
         .then((response) => {
